@@ -245,6 +245,34 @@ if (data.city && data.city.coord) {
     });
   }
 
+  const geoButton = document.getElementById('geoLocateBtn');
+  
+  if (geoButton) {
+    geoButton.addEventListener('click', () => {
+      // Step 1: Check if the device hardware supports location tracking
+      if (!navigator.geolocation) {
+        alert("Your current web browser does not support geolocation tracking features.");
+        return;
+      }
+
+      // Change button state text feedback dynamically
+      geoButton.innerText = "⌛ Locating...";
+
+      // Step 2: Request hardware system coordinates access permissions from user
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          geoButton.innerText = "📍 Locate Me"; // Reset text indicator
+          getWeatherByCoords(latitude, longitude);
+        },
+        (error) => {
+          geoButton.innerText = "📍 Locate Me"; // Reset text indicator
+          alert(`Location Access Error: ${error.message}`);
+        }
+      );
+    });
+  }
+
   // 7. Auto boot layout initialization on load
   getWeather('Lagos');
 });
