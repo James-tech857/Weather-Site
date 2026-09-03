@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="output.css">
+</head>
+<body class="font-sans antialiased">
+  <!-- MAIN CONTAINER DIV -->
+  <div class="flex flex-col items-center w-full min-h-screen bg-slate-900 p-4 text-white md:p-8">
+
+    <main class="w-full max-w-6xl">
+      <div class="grid grid-cols-1 gap-4
+">
+        
+        <!-- NAV CONTAINER -->
+        <nav class="border-b-2 border-slate-800 w-full pb-4 mb-2">
+          <div class="lg:flex justify-between items-end gap-4">
+            <div class="flex gap-1 items-center mb-4 lg:mb-0">
+              <span class="text-2xl">🌤️</span>
+              <h2 class="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">WeatherSphere</h2>
+            </div>
+            
+            <div class="flex items-center lg:w-auto gap-2 w-full relative">
+              <div class="relative w-full lg:w-[500px]">
+                <input type="text" placeholder="search city or zip code..." id="InputId" class="bg-gray-800 outline-none focus:bg-gray-600 w-full pl-10 pr-4 py-4 rounded-3xl border border-white/10 text-white">
+                <div class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <span>🔍</span>
+                </div>
+              </div>
+              <button id="celsusToggle" class="bg-gray-800 px-6 py-4 rounded-2xl focus:bg-gray-600 hover:border-blue-300 whitespace-nowrap">°C</button>
+            </div>
+          </div>
+        </nav>
+
+        <!-- FIRST HERO-SECTION-->
+        <div class="grid gap-4 grid-cols-1 lg:grid-cols-3">
+          <div class="flex flex-col justify-between bg-slate-800 p-6 rounded-3xl border border-white/10 bg-gradient-to-b from-blue-600/20 to-slate-900/40 backdrop-blur-md min-h-[250px]">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 id="cityForecast" class="font-bold text-2xl">Lagos</h3>
+                <p id="countryForecast" class="text-slate-400 font-medium">Nigeria</p>
+              </div>
+              <span class="font-bold bg-gray-700/60 px-4 py-1 rounded-xl text-sm uppercase tracking-wider">today</span>
+            </div>
+            <div class="flex items-center gap-4 my-4">
+              <h1 id="numberDegree" class="text-6xl font-bold">--°</h1>
+              <span id="weatherDisplay" class="text-6xl sm:text-3x1">⛈️</span>
+            </div>
+            <div>
+              <div class="w-full border-b border-slate-700/50 my-4"></div>
+              <div>
+                <h3 id="thunderStorm" class="font-bold text-lg text-blue-300">Loading...</h3>
+                <p id="weatherReport" class="text-slate-300 text-sm">Feels like: --°</p>
+              </div>
+              <div id="highLow" class="text-sm font-medium text-slate-400 mt-1">H: --° · L: --°</div>
+            </div>
+          </div>
+
+          <!-- FIRST-HERO CHILD (Metrics Dashboard) -->
+          <div class="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-4 lg:col-span-2">
+            <div class="flex flex-col justify-between bg-gray-800/60 p-5 rounded-3xl border border-white/10 backdrop-blur-sm">
+              <div class="flex gap-2 items-center text-slate-400">
+                <span class="text-lg">💨</span>
+                <p id="windAceleration" class="text-sm font-medium">Wind Speed</p>
+              </div>
+              <h3 id="kilometer" class="text-xl font-bold my-2">-- km/h</h3>
+              <p id="gustKm" class="text-xs text-slate-500">Local tracking</p>
+            </div>
+
+            <div class="flex flex-col justify-between bg-gray-800/60 p-5 rounded-3xl border border-white/10 backdrop-blur-sm">
+              <div class="flex gap-2 items-center text-slate-400">
+                <span class="text-lg">💧</span>
+                <p id="humidityAceleration" class="text-sm font-medium">Humidity</p>
+              </div>
+              <h3 id="degPercentage" class="text-xl font-bold my-2">--%</h3>
+              <p id="moisture" class="text-xs text-slate-500">Atmospheric levels</p>
+            </div>
+
+            <div class="flex flex-col justify-between bg-gray-800/60 p-5 rounded-3xl border border-white/10 backdrop-blur-sm">
+              <div class="flex gap-2 items-center text-slate-400">
+                <span class="text-lg">☀️</span>
+                <p id="UVAceleration" class="text-sm font-medium">UV Index</p>
+              </div>
+              <p id="mod3" class="text-xl font-bold text-white my-2">3 <span class="text-xs text-yellow-500 font-normal">(Mod)</span></p>
+              <p class="text-xs text-slate-500">Protection optional</p>
+            </div>
+
+            <!-- <div class="flex flex-col justify-between bg-gray-800/60 p-5 rounded-3xl border border-white/10 backdrop-blur-sm">
+              <div class="flex gap-2 items-center text-slate-400">
+                <span class="text-lg">🛰️</span>
+                <p id="airQAceleration" class="text-sm font-medium">Air Quality</p>
+              </div>
+              <p class="text-xl font-bold text-teal-400 my-2">42 <span id="good" class="text-xs font-normal text-slate-300">(Good)</span></p>
+              <p id="breathing" class="text-xs text-slate-500">Optimal environment</p>
+            </div> -->
+
+            <div class="flex flex-col justify-between bg-gray-800/60 p-5 rounded-3xl border border-white/10 backdrop-blur-sm">
+            <div class="flex gap-2 items-center text-slate-400">
+            <span class="text-lg">🛰️</span>
+            <p id="airQAceleration" class="text-sm font-medium">Air Quality</p>
+         </div>
+         <!-- MOVE THE ID TO THE PARENT P TAG -->
+          <p id="good" class="text-xl font-bold text-teal-400 my-2">-- <span class="text-xs font-normal text-slate-300">(Loading...)</span></p>
+          <p id="breathing" class="text-xs text-slate-500">Optimal environment</p>
+      </div>
+
+          </div>
+        </div>
+
+        <!-- SECOND-HERO-SECTION (Hourly Forecast Carousel Container) -->
+        <div class="bg-gray-800/80 w-full rounded-3xl border border-white/10 p-4">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 px-2 mb-2">Hourly Forecast</h3>
+          <!-- JAVASCRIPT HOURLY INJECTION TARGET -->
+          <div id="hourlyListWrapper" class="flex gap-4 overflow-x-auto pb-2 pt-1 scrollbar-hidden">
+            <!-- Dynamic hour node templates render here -->
+          </div>
+        </div>
+
+        <!-- THIRD-HERO-SECTION (5-Day Trend Stack) -->
+        <div class="bg-gray-800/80 w-full rounded-3xl border border-white/10 p-6">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">5-Day Forecast Trend</h3>
+          <!-- JAVASCRIPT DAILY INJECTION TARGET -->
+          <div id="dailyListWrapper" class="flex flex-col gap-1">
+            <!-- Dynamic structured trend rows render here -->
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  
+  <script src="weather.js"></script>
+</body>
+</html>

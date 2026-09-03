@@ -1,0 +1,21 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "A responsive weather application built with HTML, CSS, and Tailwind CSS",
+  "main": "script.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./output.css --watch"
+  },
+  "keywords": [
+    "weather",
+    "app",
+    "tailwind"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
